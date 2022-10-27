@@ -1,0 +1,7 @@
+************** Eliminar servidor de Grafana **************
+
+
+
+influx
+use telegraf
+DROP SERIES WHERE "host" = 'Servidor a borrar'
