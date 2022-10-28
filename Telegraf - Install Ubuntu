@@ -1,14 +1,28 @@
 ***************** instalar telegraf ubuntu CLIENT ******************
 
-
-/etc/telegraf/telegraf.conf*
-["http://monitor.ucontactcloud.com:8086","http://monitor.cleverideas.com.mx:8086"] # required
-
+*Primero descargaremos Telegraf.
 
 wget https://dl.influxdata.com/telegraf/releases/telegraf_1.8.0-1_amd64.deb
 sudo dpkg -i telegraf_1.8.0-1_amd64.deb
+
+
+*Ahora encendemos Telegraf
+
 sudo systemctl start telegraf
 sudo systemctl status telegraf
+
+
+*Entramos a la configuracion en la siguiente carpeta.
+
+vim /etc/telegraf/telegraf.conf*
+
+
+*insertamos esta linea 
+
+["http://monitor.ucontactcloud.com:8086","http://monitor.cleverideas.com.mx:8086"] # required
+
+
+*Por ultimo reiniciamos Telegraf
 
 systemctl restart telegraf.service
 
