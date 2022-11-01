@@ -19,4 +19,60 @@ sudo dpkg -i grafana_9.2.3_amd64.deb
  sudo service grafana-server status
 
 
-*
+
+* Revisamos la version de Nginx
+
+nginx -v
+
+
+* Instalar
+
+sudo apt install nginx
+
+
+* Revisar que este activo
+
+sudo service nginx status
+
+
+
+* Revisar sitios disponibles
+
+cd /etc/nginx/sites-enabled
+
+
+
+* Entrar a la carpeta
+
+sudo vim dns.yourdomain.com
+
+
+* Copiar dentro de el archivo
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name  YOUR-DOMAIN-NAME;
+
+    location / {
+        proxy_set_header Host $http_host;
+        proxy_pass           http://localhost:3000/;
+    }
+}
+
+
+
+*  Comprobar que ya se encuentre disponible
+
+ls
+
+
+* Revisamos que este correcto
+
+nginx -t
+
+
+* Reiniciamos Nginx
+
+sudo service nginx restart
+sudo service nginx status
