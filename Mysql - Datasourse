@@ -8,8 +8,19 @@ Allow incoming ports: (22, 3306)
 sudo apt update
 
 
-*Install Mysql server
+
+* Install Mysql server
 
 sudo apt install mysql-server
 
 
+
+* Validate running 
+
+sudo service mysql status
+
+
+
+* Check version
+
+mysql -V
