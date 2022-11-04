@@ -56,9 +56,18 @@ wget https://raw.githubusercontent.com/meob/my2Collector/master/my2_80.sql
 create user my2@'%' identified by 'password';
 grant all on my2.* to my2@'%';
 grant select on performance_schema.* to my2@'%';
+
+ 
+ ******** Save File ********
  
  
+ * Run the SQL script
  
+ 
+ mysql < my2_80.sql
+  
+
+
  
  
  
