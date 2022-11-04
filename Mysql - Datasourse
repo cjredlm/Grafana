@@ -66,8 +66,31 @@ grant select on performance_schema.* to my2@'%';
  
  mysql < my2_80.sql
   
+  
 
+* Enter Mysql
 
+  mysql
+ 
+> show databases;
+> show variables where variable_name = 'event_scheduler';
+> select host, user from mysql.user;
+> use my2;
+> show tables;
+> select * from current;
+> select * from status;
+> quit
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
  
  
