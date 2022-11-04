@@ -79,6 +79,16 @@ grant select on performance_schema.* to my2@'%';
 > show tables;
 > select * from current;
 > select * from status;
+> quit;
+
+
+* Create user Grafana
+
+mysql
+
+> CREATE USER 'grafana'@'###.###.###.###' IDENTIFIED BY 'password';  (Change ip grafana server)
+> GRANT SELECT ON my2.* TO 'grafana'@'###.###.###.###';
+> FLUSH PRIVILEGES;
 > quit
  
  
