@@ -87,9 +87,11 @@ grant select on performance_schema.* to my2@'%';
 mysql
 
 > CREATE USER 'grafana'@'###.###.###.###' IDENTIFIED BY 'password';  (Change ip grafana server)
-> GRANT SELECT ON my2.* TO 'grafana'@'###.###.###.###';
+> GRANT SELECT ON my2.* TO 'grafana'@'###.###.###.###';              (Change ip grafana server)
 > FLUSH PRIVILEGES;
+> select host, user from mysql.user;
 > quit
+ 
  
  
  
