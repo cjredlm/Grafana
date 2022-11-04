@@ -119,10 +119,12 @@ sudo service mysql status
  > Go To https://grafana.com/grafana/dashboards/7991-2mysql-simple-dashboard/   and    "click Copy ID to clipboard" and paste.
  
  
+ * IP Tables
  
- 
- 
- 
+ iptables -L
+ iptables -A INPUT -p tcp -s grafanainstance --dport 3306 -j ACCEPT
+ iptables -A INPUT -p tcp --dport 3306 -j DROP
+
  
  
  
