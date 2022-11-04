@@ -1,0 +1,15 @@
+*************************** Mysql - Datasourse ******************************
+
+Allow incoming ports: (22, 3306)
+
+
+* Server Update
+
+sudo apt update
+
+
+*Install Mysql server
+
+sudo apt install mysql-server
+
+
