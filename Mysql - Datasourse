@@ -94,9 +94,29 @@ mysql
  
  
  
+ * Open the MySQL configuration file
  
  
+ sudo nano /etc/mysql/my.cnf
  
+ * Add next lines
+ 
+ [mysqld]
+bind-address    = 0.0.0.0
+ 
+ 
+* Reset Mysql service
+
+sudo service mysql restart
+sudo service mysql status
+ 
+ 
+ ********** Add datasourse Mysql in Grafana  ****************
+ 
+ Go to section Dashboards anda serch "NEW"
+ 
+ > Import  
+ > Go To https://grafana.com/grafana/dashboards/7991-2mysql-simple-dashboard/   and    "click Copy ID to clipboard" and paste.
  
  
  
