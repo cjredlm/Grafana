@@ -24,3 +24,43 @@ sudo service mysql status
 * Check version
 
 mysql -V
+
+
+
+* Download Dashboard Mysql
+
+
+wget https://raw.githubusercontent.com/meob/my2Collector/master/my2_80.sql
+
+
+
+ * Enter the document
+ 
+ 
+ sudo nano my2_80.sql
+ 
+ 
+ * Find these lines at the end of the script where it creates a specific user,
+ 
+ 
+ -- Use a specific user (suggested)
+-- create user my2@'%' identified by 'P1e@seCh@ngeMe';
+-- grant all on my2.* to my2@'%';
+-- grant select on performance_schema.* to my2@'%';
+ 
+ 
+ * Uncomment and change the password to something that you think is better. E.g.,
+ 
+ 
+ -- Use a specific user (suggested)
+create user my2@'%' identified by 'password';
+grant all on my2.* to my2@'%';
+grant select on performance_schema.* to my2@'%';
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
