@@ -36,8 +36,17 @@ WHERE $__timeFilter(TIMEST)
 AND variable_name in ('THREADS_CACHED', 'THREADS_CONNECTED', 'THREADS_RUNNING', 'THREADS_CREATED')
 ORDER BY TIMEST ASC
 
+****************************************************************************************************************************************************************
 
 
+
+
+SELECT
+NOW() as time_sec,
+  username AS metric,
+  total as value
+FROM exampledb.simple_table
+ORDER BY id
 
 
 
