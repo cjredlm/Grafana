@@ -1,2 +1,175 @@
-************************* Loki Install **************************
+************************* Download and Install Loki Binary **************************
+
+* This installation will be done on your grafana instance (Localhost)
+
+
+cd /usr/local/bin
+
+
+
+
+* Download Loki
+
+curl -O -L "https://github.com/grafana/loki/releases/download/v2.4.1/loki-linux-amd64.zip"
+
+
+
+
+* check 
+
+ls
+
+
+
+
+* install Unzip
+
+apt install unzip
+
+
+
+
+* Descompres file
+
+
+unzip "loki-linux-amd64.zip"
+
+
+
+
+* List file
+
+ls -lh 
+
+
+
+* Permitions
+
+chmod a+x "loki-linux-amd64"
+
+
+
+* Config File
+
+
+sudo nano config-loki.yml
+
+
+
+
+* Add text 
+
+
+auth_enabled: false
+
+server:
+  http_listen_port: 3100
+  grpc_listen_port: 9096
+
+common:
+  path_prefix: /tmp/loki
+  storage:
+    filesystem:
+      chunks_directory: /tmp/loki/chunks
+      rules_directory: /tmp/loki/rules
+  replication_factor: 1
+  ring:
+    instance_addr: 127.0.0.1
+    kvstore:
+      store: inmemory
+
+schema_config:
+  configs:
+    - from: 2020-10-24
+      store: boltdb-shipper
+      object_store: filesystem
+      schema: v11
+      index:
+        prefix: index_
+        period: 24h
+
+ruler:
+  alertmanager_url: http://localhost:9093
+
+
+
+
+
+*  Configure Loki to run as a service:
+
+Now we will configure Loki to run as a service so that it stays running in the background.
+
+Create a user specifically for the Loki service.
+
+
+
+
+* Create User
+
+
+sudo useradd --system loki
+
+
+
+
+* Open File 
+
+
+sudo nano /etc/systemd/system/loki.service
+
+
+
+
+* Paste next lines
+
+[Unit]
+Description=Loki service
+After=network.target
+
+[Service]
+Type=simple
+User=loki
+ExecStart=/usr/local/bin/loki-linux-amd64 -config.file /usr/local/bin/config-loki.yml
+
+[Install]
+WantedBy=multi-user.target
+
+
+* Now start and check the service is running.
+
+
+sudo service loki start
+sudo service loki status
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
