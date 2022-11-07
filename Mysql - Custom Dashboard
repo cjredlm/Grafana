@@ -1,0 +1,54 @@
+
+
+use my2;
+
+show tables;
+
+select * from my2.status limit 10;
+
+
+
+SELECT 
+UNIX_TIMESTAMP(TIMEST) as time_sec,
+VARIABLE_VALUE as value,
+VARIABLE_NAME as metric
+FROM my2.status
+WHERE $__timeFilter(TIMEST)
+ORDER BY TIMEST ASC
+
+
+
+SELECT 
+UNIX_TIMESTAMP(TIMEST) as time_sec,
+VARIABLE_VALUE+0 as value,
+VARIABLE_NAME as metric
+FROM my2.status
+WHERE $__timeFilter(TIMEST)
+ORDER BY TIMEST ASC
+
+
+SELECT 
+UNIX_TIMESTAMP(TIMEST) as time_sec,
+VARIABLE_VALUE+0 as value,
+VARIABLE_NAME as metric
+FROM my2.status
+WHERE $__timeFilter(TIMEST)
+AND variable_name in ('THREADS_CACHED', 'THREADS_CONNECTED', 'THREADS_RUNNING', 'THREADS_CREATED')
+ORDER BY TIMEST ASC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
