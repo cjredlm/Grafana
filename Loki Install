@@ -145,31 +145,45 @@ sudo service loki status
 
 
 
+******************** Warning *********************
+
+If you reboot your server, the Loki Service may not restart automatically.
+
+You can set the Loki service to auto restart after reboot by entering,
+
+
+sudo systemctl enable loki.service
+
+
+
+
+* Configure Firewall
+
+
+iptables -A INPUT -p tcp -s localhost --dport 3100 -j ACCEPT
+iptables -A INPUT -p tcp --dport 3100 -j DROP
+iptables -L
+
+
+
+After blocking port 3100 for external requests, you can verify that local request are still possible by using,
+
+
+curl "127.0.0.1:3100/metrics"
+
+
+Also, Loki exposes port 9096 for gRPC communications. This port may also be accessible across the internet. To close it using iptables, then use,
+
+
+iptables -A INPUT -p tcp -s <your grafana servers domain name or ip address> --dport 9096 -j ACCEPT
+iptables -A INPUT -p tcp -s localhost --dport 9096 -j ACCEPT
+iptables -A INPUT -p tcp --dport 9096 -j DROP
 
 
 
 
 
+* Check the listen ports
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ss -tulnip | grep loki
