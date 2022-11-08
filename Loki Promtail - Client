@@ -1,1 +1,45 @@
+************** Loki Promtail - Client ****************
+
+
+
+cd /usr/local/bin
+
+apt install unzip
+
+unzip "promtail-linux-amd64.zip"
+
+ls -lh
+
+sudo chmod a+x "promtail-linux-amd64"
+
+
+
+
+******  Create the Promtail config ******
+
+
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 9097
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: 'http://##.##.##.##:3100/loki/api/v1/push'  (change the address whit you IP)
+
+scrape_configs:
+  - job_name: system
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: varlogs
+          __path__: /var/log/*log
+          
+          
+          
+
+
+
 
