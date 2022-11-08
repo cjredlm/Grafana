@@ -36,3 +36,46 @@ scrape_configs:
         labels:
           job: varlogs
           __path__: /var/log/*log
+          
+          
+ls -lh        
+          
+          
+sudo useradd --system promtail
+
+id promtail
+
+id loki
+
+
+sudo nano /etc/systemd/system/promtail.service
+
+
+
+[Unit]
+Description=Promtail service
+After=network.target
+
+[Service]
+Type=simple
+User=promtail
+ExecStart=/usr/local/bin/promtail-linux-amd64 -config.file /usr/local/bin/config-promtail.yml
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+sudo service promtail start
+sudo service promtail status
+
+
+cd /var/log/
+
+ls -lh
+
+usermod -a -G adm promtail
+
+
+          
+          
