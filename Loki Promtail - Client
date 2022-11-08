@@ -15,7 +15,7 @@ sudo chmod a+x "promtail-linux-amd64"
 
 
 
-******  Create the Promtail config ******
+**********  Create the Promtail config ***********
 
 
 server:
@@ -36,10 +36,36 @@ scrape_configs:
         labels:
           job: varlogs
           __path__: /var/log/*log
-          
-          
+          host: mysql
           
 
 
+
+********** Configure Promtail as a Service ************
+
+
+sudo useradd --system promtail
+          
+id promtail          
+
+
+
+******* Create a file called promtail.service *******
+
+
+sudo nano /etc/systemd/system/promtail.service
+          
+
+[Unit]
+Description=Promtail service
+After=network.target
+
+[Service]
+Type=simple
+User=promtail
+ExecStart=/usr/local/bin/promtail-linux-amd64 -config.file /usr/local/bin/config-promtail.yml
+
+[Install]
+WantedBy=multi-user.target
 
 
