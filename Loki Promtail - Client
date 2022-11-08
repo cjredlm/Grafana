@@ -69,3 +69,17 @@ ExecStart=/usr/local/bin/promtail-linux-amd64 -config.file /usr/local/bin/config
 WantedBy=multi-user.target
 
 
+
+
+***************** Now start and check the service is running. *********************
+
+sudo service promtail start
+sudo service promtail status
+
+
+
+iptables -I INPUT 3 -p tcp -s ##.##.##.## --dport 3100 -j ACCEPT
+
+
+
+
