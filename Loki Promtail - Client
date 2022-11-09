@@ -20,6 +20,8 @@ sudo chmod a+x "promtail-linux-amd64"
 **********  Create the Promtail config ***********
 
 
+sudo nano config-promtail.yml
+
 server:
   http_listen_port: 9080
   grpc_listen_port: 9097
