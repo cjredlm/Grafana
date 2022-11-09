@@ -6,6 +6,8 @@ cd /usr/local/bin
 
 apt install unzip
 
+curl -O -L "https://github.com/grafana/loki/releases/download/v2.4.1/promtail-linux-amd64.zip"
+
 unzip "promtail-linux-amd64.zip"
 
 ls -lh
