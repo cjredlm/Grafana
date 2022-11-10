@@ -105,7 +105,7 @@ sudo service promtail status
 
 
 
-iptables -I INPUT 3 -p tcp -s ##.##.##.## --dport 3100 -j ACCEPT
+
 
 
 
