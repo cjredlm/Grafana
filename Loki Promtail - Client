@@ -54,6 +54,29 @@ id promtail
 
 
 
+
+
+############ Here go you grafnana instance and configure Firewall ############
+
+iptables -L
+
+
+iptables -I INPUT 3 -p tcp -s <IP Address of server to allow> --dport 3100 -j ACCEPT
+
+
+
+
+############ In your server client ############
+
+
+cd /var/log/
+ls -lh
+usermod -a -G adm promtail
+
+sudo service promtail restart
+sudo service promtail status
+
+
 ******* Create a file called promtail.service *******
 
 
