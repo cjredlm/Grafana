@@ -1,0 +1,39 @@
+*********** Nginx - Monitoring Logs *************
+
+
+We will add to our Promtail scrape configs, the ability to read the Nginx access and error logs.
+
+We need to add a new job_name to our existing Promtail scrape_configs in the config_promtail.yml file.
+
+
+***** This configuration add in you grafana instance (Local Host) *****
+
+
+* inside the next route 
+
+  cd /var/log/nginx/
+  
+  ls -lh
+  
+  
+  cd /usr/local/bin/
+  
+  ls -lh
+  
+
+** Open the file and add next text **
+
+  sudo nano config_promtail.yml
+
+  - job_name: nginx
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: nginx
+          __path__: /var/log/nginx/*log
+          host: grafana
+  
+  
+  
+  
