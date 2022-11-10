@@ -89,9 +89,24 @@ Return lines including the text "status 403" or "status 503" using regex
 
 count_over_time({job="varlogs"}[1m])      The  expresions chanche the time range ([1m]))
 
+rate({job="varlogs"}[1m])
+
+count_over_time({job="varlogs"} |= "error" [1h])
+
+sum(count_over_time({job="varlogs"}[1h]))
+
+max(count_over_time({job="varlogs"}[1h]))
 
 
-
+sum : Calculate the total of all vectors in the range at time
+min : Show the minimum value from all vectors in the range at time
+max : Show the maximum value from all vectors in the range at time
+avg : Calculate the average of the values from all vectors in the range at time
+stddev : Calculate the standard deviation of the values from all vectors in the range at time
+stdvar : Calculate the standard variance of the values from all vectors in the range at time
+count : Count the number of elements all all vectors in the range at time
+bottomk : Select lowest k values in all the vectors in the range at time
+topk : Select highest k values in all the vectors in the range at time
 
 
 
