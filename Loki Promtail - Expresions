@@ -84,7 +84,10 @@ Return lines including the text "status 403" or "status 503" using regex
 
 
 
+********** EXPRESIONS Querys ***********
 
+
+count_over_time({job="varlogs"}[1m])
 
 
 
