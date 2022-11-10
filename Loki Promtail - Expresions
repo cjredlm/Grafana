@@ -99,6 +99,9 @@ max(count_over_time({job="varlogs"}[1h]))
 
 bottomk(2,count_over_time({job="varlogs"}[2h]))
 
+sum(count_over_time({job="varlogs"}[1m])) by (filename)
+
+sum(count_over_time({job="varlogs"}[1m])) by (host)
 
 sum : Calculate the total of all vectors in the range at time
 min : Show the minimum value from all vectors in the range at time
@@ -111,14 +114,32 @@ bottomk : Select lowest k values in all the vectors in the range at time
 topk : Select highest k values in all the vectors in the range at time
 
 
+***** Comparison Operators ******
+
+
+Comparison Operators. Used for testing numeric values present in scalars and vectors.
+
+== (equality)
+!= (inequality)
+> (greater than)
+>= (greater than or equal to)
+< (less than)
+<= (less than or equal to)
 
 
 
+EXAMPLES
+
+Returns values greater than 4
 
 
+sum(count_over_time({job="varlogs"}[1m])) > 4
 
 
+Returns values less than or equal to 1
 
+
+sum(count_over_time({job="varlogs"}[1m])) <= 1
 
 
 
