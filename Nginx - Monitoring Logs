@@ -35,5 +35,18 @@ We need to add a new job_name to our existing Promtail scrape_configs in the con
           host: grafana
   
   
-  
+sudo service promtail restart
+sudo service promtail status
+
+
+****************************************************************
+
+* Expresions:
+
+count_over_time({job="nginx"} | pattern `<_> - - <_> "<method> <_> <_>" <status> <_> <_> "<_>" <_>`[1m])
+
+
+
+
+
   
