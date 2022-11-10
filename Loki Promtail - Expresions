@@ -97,6 +97,8 @@ sum(count_over_time({job="varlogs"}[1h]))
 
 max(count_over_time({job="varlogs"}[1h]))
 
+bottomk(2,count_over_time({job="varlogs"}[2h]))
+
 
 sum : Calculate the total of all vectors in the range at time
 min : Show the minimum value from all vectors in the range at time
