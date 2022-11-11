@@ -79,6 +79,8 @@ Return lines including the text "Invalid user" and including ("bob" or "redis") 
 {job="varlogs"} |~ "Invalid user (bob|redis)"
 Return lines including the text "status 403" or "status 503" using regex
 
+{job="varlogs"} |~ "Invalid user"
+
 
 {job="varlogs"} |~ "status [45]03"
 
