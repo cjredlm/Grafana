@@ -47,6 +47,10 @@ count_over_time({job="nginx"} | pattern `<_> - - <_> "<method> <_> <_>" <status>
 
 {job="nginx"} | pattern `<remote_addr> - - <time_local> "<_> <_> <_>" <_> <_> <_> "<_>" <_>`
 
+{job="nginx"} | pattern `<remote_addr> - - <time_local> "<method> <_> <_>" <status> <_> <_> "<_>" <_>`
+
+sum by (status) (count_over_time({job="nginx"} | pattern `<_> - - <_> "<method> <_> <_>" <status> <_> <_> "<_>" <_>`[1m]))
+
 
 * remote_addr
 * remote_user
