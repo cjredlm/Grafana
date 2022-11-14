@@ -1,0 +1,23 @@
+**** In you Grafana instance *****
+
+
+
+sudo nano /etc/prometheus/prometheus.yml
+
+
+  - job_name: grafana
+    static_configs:
+      - targets: ['localhost:3000']
+      
+      
+sudo service prometheus restart
+sudo service prometheus status
+
+
+http status codes	sum by (statuscode) (irate(http_request_total{job='grafana'}[5m]))	sum by (status_code) (irate(grafana_http_request_duration_seconds_sum{job='grafana'}[5m]))
+
+
+Prometheus alerts	sum (ALERTS)	sum (grafana_alerting_active_alerts)
+
+
+Most used handlers	sort(topk(8, sum by (handler) ((http_request_total{job="grafana"})))	sort(topk(8, sum by (handler) (grafana_http_request_duration_seconds_sum{job="grafana"})))
