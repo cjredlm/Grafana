@@ -24,3 +24,23 @@ http://you new IP Server:8086/
 iptables -A INPUT -p tcp -s <domain name or ip of allowed host> --dport 8086 -j ACCEPT
 iptables -A INPUT -p tcp --dport 8086 -j DROP
 iptables -L
+
+
+
+*************************************** install telegraf agent and configure for influxdb   ********************************************************
+
+
+wget https://dl.influxdata.com/telegraf/releases/telegraf_1.20.4-1_amd64.deb
+
+sudo dpkg -i telegraf_1.20.4-1_amd64.deb
+
+sudo service telegraf status
+
+
+*************** will be dropped: 401 Unauthorized) ********************
+
+
+cd /etc/telegraf/ 
+
+
+
