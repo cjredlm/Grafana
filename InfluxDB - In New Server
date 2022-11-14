@@ -12,4 +12,4 @@ sudo service influxdb status
 
 *** Search next IP address ***
 
-http://You Grafana IP :8086/
+http://you new IP Server:8086/
