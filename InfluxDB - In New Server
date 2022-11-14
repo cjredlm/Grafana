@@ -13,3 +13,10 @@ sudo service influxdb status
 *** Search next IP address ***
 
 http://you new IP Server:8086/
+
+
+*** In Grafana Instance ***
+
+iptables -A INPUT -p tcp -s <domain name or ip of allowed host> --dport 8086 -j ACCEPT
+iptables -A INPUT -p tcp --dport 8086 -j DROP
+iptables -L
