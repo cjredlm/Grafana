@@ -1,7 +1,0 @@
-************** Eliminar servidor de Telegraf **************
-
-
-
-influx
-use telegraf
-DROP SERIES WHERE "host" = 'Servidor a borrar'
