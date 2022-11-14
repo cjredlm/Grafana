@@ -1,1 +1,36 @@
 
+
+sudo apt install prometheus-node-exporter
+
+
+
+sudo service prometheus-node-exporter status
+
+
+
+**** this command runs all together ***
+
+id prometheus
+ps -u prometheus
+ss -ntlp | grep prometheus
+
+
+
+ss -ntlp | grep prometheus
+
+
+It is now exposing the metrics endpoint on http://[your domain or ip]:9100
+
+
+
+***In you grafana instance ***
+
+sudo nano /etc/prometheus/prometheus.yml
+
+
+** in node exporter add next line **
+
+- targets: ['IP_ADDRESS_OR_DOMAIN_NAME_OF OTHER_SERVER:9100']
+
+
+
