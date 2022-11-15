@@ -1,1 +1,20 @@
 
+sudo apt install snmp snmpd snmp-mibs-downloader
+
+sudo service snmpd status
+
+snmpwalk -v 2c -c public 127.0.0.1 .
+
+
+
+sudo nano /etc/snmp/snmp.conf
+
+comment out the line mibs as below, using a #
+
+#mibs
+
+sudo nano /etc/telegraf/telegraf.conf
+
+
+sudo service telegraf restart
+sudo service telegraf status
