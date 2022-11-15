@@ -1,0 +1,54 @@
+wget https://dl.influxdata.com/telegraf/releases/telegraf_1.20.4-1_amd64.deb
+
+
+sudo dpkg -i telegraf_1.20.4-1_amd64.deb
+
+sudo service telegraf status
+
+sudo service telegraf start
+
+cd /etc/telegraf
+
+cp telegraf.conf telegraf.conf.bak
+
+rm telegraf.conf
+
+
+sudo nano telegraf.conf
+
+
+[agent]
+  interval = "10s"
+  round_interval = true
+  metric_batch_size = 1000
+  metric_buffer_limit = 10000
+  collection_jitter = "0s"
+  flush_interval = "10s"
+  flush_jitter = "0s"
+  precision = ""
+  hostname = ""
+  omit_hostname = false
+
+[[outputs.influxdb_v2]]
+  urls = ["http://127.0.0.1:8086"]
+  token = "YOUR TELEGRAF READ/WRITE TOKEN"
+  organization = "YOUR ORG NAME"
+  bucket = "telegraf"
+
+[[inputs.cpu]]
+  percpu = true
+  totalcpu = true
+  collect_cpu_time = false
+  report_active = false
+[[inputs.disk]]
+  ignore_fs = ["tmpfs", "devtmpfs", "devfs", "iso9660", "overlay", "aufs", "squashfs"]
+[[inputs.diskio]]
+[[inputs.mem]]
+[[inputs.net]]
+[[inputs.processes]]
+[[inputs.swap]]
+[[inputs.system]]
+
+
+sudo service telegraf restart
+sudo service telegraf status
