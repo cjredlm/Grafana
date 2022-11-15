@@ -33,4 +33,9 @@ sudo nano /etc/prometheus/prometheus.yml
 - targets: ['IP_ADDRESS_OR_DOMAIN_NAME_OF OTHER_SERVER:9100']
 
 
+iptables -I INPUT  -p tcp -s Grafana IP Instance --dport 9100 -j ACCEPT
+
+
+
+
 
