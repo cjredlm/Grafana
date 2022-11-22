@@ -64,3 +64,21 @@ curl http://localhost:9200/_cat/indices
 ******************* NOW CONTINUE ADD IN GRAFANA DATASOURCES ************************
 
 
+
+
+
+
+curl -XDELETE 'http://localhost:9200/index1'
+
+
+iptables -A INPUT -p tcp -s localhost --dport 9200 -j ACCEPT
+iptables -A INPUT -p tcp -s ###.###.###.### --dport 9200 -j ACCEPT
+iptables -A INPUT -p tcp --dport 9200 -j DROP
+iptables -L
+
+
+
+********** install iptables-persistent ************* 
+
+sudo apt install iptables-persistent
+
