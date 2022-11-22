@@ -1,1 +1,66 @@
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+
+
+sudo apt-get install apt-transport-https
+
+
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
+
+
+sudo apt-get update && sudo apt-get install elasticsearch
+
+sudo service elasticsearch status
+sudo service elasticsearch start
+
+
+sudo journalctl --unit elasticsearch
+
+
+ps -u elasticsearch
+
+
+curl "http://localhost:9200"
+
+
+cd /etc/elasticsearch/
+ls -lh
+
+
+
+sudo nano /etc/elasticsearch/elasticsearch.yml
+
+
+
+
+
+***************** Use these settings *****************************
+
+
+
+cluster.name: my-application
+node.name: node-1
+network.host: 0.0.0.0
+http.port: 9200
+cluster.initial_master_nodes: ["node-1"]
+
+
+******************************************************************
+
+sudo service elasticsearch restart
+
+
+curl -X PUT "http://localhost:9200/index1"
+
+
+curl -H "Content-Type: application/json" -XPOST "http://localhost:9200/index1/_doc" -d '{"abc":123, "name":"xyx", "@timestamp" : "'$(date -Iseconds)'"}'
+
+
+curl "http://localhost:9200/index1/_search?pretty"
+
+
+curl http://localhost:9200/_cat/indices
+
+
+******************* NOW CONTINUE ADD IN GRAFANA DATASOURCES ************************
+
 
