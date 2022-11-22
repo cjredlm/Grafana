@@ -1,0 +1,10 @@
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.16.1-amd64.deb
+sudo dpkg -i metricbeat-7.16.1-amd64.deb
+
+metricbeat modules enable linux
+
+
+cd /etc/metricbeat/
+
+sudo nano metricbeat.yml
+
