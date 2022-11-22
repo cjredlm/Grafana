@@ -1,1 +1,23 @@
 
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.16.1-amd64.deb
+sudo dpkg -i filebeat-7.16.1-amd64.deb
+
+sudo service filebeat status
+
+cd /etc/filebeat
+ls -lh
+
+filebeat modules enable system
+cd modules.d/
+
+
+sudo nano /etc/filebeat/filebeat.yml
+
+output.elasticsearch:
+  hosts: ["<IP Address of your Elasticsearch Server>:9200"]
+  
+  
+sudo service filebeat start
+sudo service filebeat status
+
+curl "http://IP_ELASTICSEARCH_DATASOURCE/_cat/indices"
