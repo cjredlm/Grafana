@@ -37,5 +37,6 @@ iptables -I INPUT  -p tcp -s Grafana IP Instance --dport 9100 -j ACCEPT
 
 
 
+sudo apt-get install iptables-persistent
 
 
